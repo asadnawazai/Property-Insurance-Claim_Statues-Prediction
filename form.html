@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Claim Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f7f7f7; color: #333; }
+        .container { max-width: 500px; margin: auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); }
+        h2 { text-align: center; color: #4CAF50; }
+        form { display: flex; flex-direction: column; }
+        label { margin-top: 10px; font-weight: bold; }
+        select, input { padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-top: 5px; }
+        button { margin-top: 20px; padding: 10px; border: none; background-color: #4CAF50; color: white; font-size: 16px; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        .result { text-align: center; margin-top: 20px; font-size: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Insurance Claim Prediction</h2>
+        <form action="/predict" method="post">
+            <label for="Claim_Amount">Claim Amount</label>
+            <input type="number" name="Claim_Amount" step="0.01" required>
+
+            <label for="Building_Age">Building Age</label>
+            <input type="number" name="Building_Age" required>
+
+            <label for="Repair_Estimate">Repair Estimate</label>
+            <input type="number" name="Repair_Estimate" step="0.01" required>
+
+            <label for="Policy_Coverage_Amount">Policy Coverage Amount</label>
+            <input type="number" name="Policy_Coverage_Amount" step="0.01" required>
+
+            <label for="Amount_Paid">Amount Paid</label>
+            <input type="number" name="Amount_Paid" step="0.01" required>
+
+            <label for="Property_Type">Property Type</label>
+            <select name="Property_Type" required>
+                <option>Residential</option>
+                <option>Commercial</option>
+                <option>Industrial</option>
+            </select>
+
+            <label for="Property_Location">Property Location</label>
+            <select name="Property_Location" required>
+                <option>Josephborough</option>
+                <option>South Jane</option>
+                <option>Port Margaretborough</option>
+                <option>Shawnview</option>
+                <option>Calebberg</option>
+            </select>
+
+            <label for="Incident_Type">Incident Type</label>
+            <select name="Incident_Type" required>
+                <option>Earthquake</option>
+                <option>Theft</option>
+                <option>Vandalism</option>
+                <option>Flood</option>
+            </select>
+
+            <label for="Severity">Severity</label>
+            <select name="Severity" required>
+                <option>Minor</option>
+                <option>Major</option>
+                <option>Total Loss</option>
+            </select>
+
+            <label for="Building_Material">Building Material</label>
+            <select name="Building_Material" required>
+                <option>Brick</option>
+                <option>Wood</option>
+                <option>Concrete</option>
+            </select>
+
+            <label for="Fraudulent">Fraudulent</label>
+            <select name="Fraudulent" required>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <button type="submit">Predict</button>
+
+            {% if result %}
+                <div class="result">Prediction: {{ result }}</div>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>
